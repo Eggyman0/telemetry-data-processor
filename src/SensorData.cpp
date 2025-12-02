@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <string>
 #include <vector>
 #include "SensorData.h"
 
