@@ -37,15 +37,11 @@ DataImporter::DataImporter(string CsvFile) {
  */
 bool DataImporter::isSensorUnique(string sensorID) {
     for (int i = 0; i < existingSensors.size(); i++) {
-        if (existingSensors[i] != sensorID) {
-            return true;
+        if (existingSensors[i] == sensorID) {
+            return false;
         }
     }
-    return false;
-}
-
-bool DataImporter::string_to_bool(string s) {
-    return s == "true";
+    return true;
 }
 
 /**
@@ -60,13 +56,7 @@ void DataImporter::readCsv() {
     string tempLine = "";
     string tempTs = "";
     string tempDevice = "";
-    double tempCo = 0;
-    double tempHumidity = 0;
-    bool tempLight = 0;
-    double tempLpg = 0;
-    bool tempMotion = 0;
-    double tempSmoke = 0;
-    double tempTempF = 0; // temporary temperature lol
+    string tempStr = "";
     int commaLocation = 0; // number corresponds to location of comma when reading file
 
     int sensorIndex = 0; // to keep track of which sensor's data you are reading at the moment
@@ -101,39 +91,36 @@ void DataImporter::readCsv() {
         sensor->setTs(tempTs);
 
         commaLocation = tempLine.find(',');
-        tempCo = stod(tempLine.substr(0, commaLocation));
-        sensor->setCo(tempCo);
+        tempStr = tempLine.substr(0, commaLocation);
+        sensor->setCo(tempStr);
         tempLine = tempLine.substr(commaLocation+1, tempLine.length());
         
         commaLocation = tempLine.find(',');
-        tempHumidity = stod(tempLine.substr(0, commaLocation));
-        sensor->setHumidity(tempHumidity);
+        tempStr = tempLine.substr(0, commaLocation);
+        sensor->setHumidity(tempStr);
         tempLine = tempLine.substr(commaLocation+1, tempLine.length());
 
         commaLocation = tempLine.find(',');
-        tempLight = string_to_bool(tempLine.substr(0, commaLocation));
-        sensor->setLight(tempLight);
+        tempStr = tempLine.substr(0, commaLocation);
+        sensor->setLight(tempStr);
         tempLine = tempLine.substr(commaLocation+1, tempLine.length());
 
         commaLocation = tempLine.find(',');
-        tempLpg = stod(tempLine.substr(0, commaLocation));
-        sensor->setLpg(tempLpg);
+        tempStr = tempLine.substr(0, commaLocation);
+        sensor->setLpg(tempStr);
         tempLine = tempLine.substr(commaLocation+1, tempLine.length());
 
         commaLocation = tempLine.find(',');
-        tempMotion = string_to_bool(tempLine.substr(0, commaLocation));
-        sensor->setMotion(tempMotion);
+        tempStr = tempLine.substr(0, commaLocation);
+        sensor->setMotion(tempStr);
         tempLine = tempLine.substr(commaLocation+1, tempLine.length());
 
         commaLocation = tempLine.find(',');
-        tempSmoke = stod(tempLine.substr(0, commaLocation));
-        sensor->setSmoke(tempSmoke);
+        tempStr = tempLine.substr(0, commaLocation);
+        sensor->setSmoke(tempStr);
         tempLine = tempLine.substr(commaLocation+1, tempLine.length());
 
-        commaLocation = tempLine.find(',');
-        tempTempF = stod(tempLine.substr(0, commaLocation));
-        sensor->setTempF(tempTempF);
-        tempLine = tempLine.substr(commaLocation+1, tempLine.length());
+        sensor->setTempF(tempStr);
     }
     
     iFile.close();
@@ -142,8 +129,9 @@ void DataImporter::readCsv() {
 void DataImporter::test_output(int index) {
     int sensorIndex = index;
     SensorData *sensor = v_sensors[sensorIndex];
-    cout << sensor->getDeviceID();
-    for (int i = 0; i < sensor->getTs().size(); i++) {
-        cout << sensor->getTs()[i];
-    }
+    cout << "Device ID: " << sensor->getDeviceID() << "\n";
+    cout << "Number of Elements: " << sensor->getTs().size() << "\n";
+    // for (int i = 0; i < sensor->getTs().size(); i++) {
+    //     cout << sensor->getTs()[i] << "\n";
+    // }
 }

@@ -11,14 +11,14 @@ class SensorData {
         vector<string> ts;
         vector<string> dateTime;
         string deviceID;
-        vector<double> co;
-        vector<double> humidity;
-        vector<bool> light;
-        vector<double> lpg;
-        vector<bool> motion;
-        vector<double> smoke;
-        vector<double> tempF;
-        vector<double> tempC;
+        vector<string> co;
+        vector<string> humidity;
+        vector<string> light;
+        vector<string> lpg;
+        vector<string> motion;
+        vector<string> smoke;
+        vector<string> tempF;
+        vector<string> tempC;
     public:
         // Constructor
         SensorData();
@@ -27,27 +27,27 @@ class SensorData {
         vector<string> getTs();
         vector<string> getDateTime();
         string getDeviceID();
-        vector<double> getCo();
-        vector<double> getHumidity();
-        vector<bool> getLight();
-        vector<double> getLpg();
-        vector<bool> getMotion();
-        vector<double> getSmoke();
-        vector<double> getTempF();
-        vector<double> getTempC();
+        vector<string> getCo();
+        vector<string> getHumidity();
+        vector<string> getLight();
+        vector<string> getLpg();
+        vector<string> getMotion();
+        vector<string> getSmoke();
+        vector<string> getTempF();
+        vector<string> getTempC();
 
         // Mutators
         void setTs(string ts);
         void setDateTime(string dateTime);
         void setDeviceID(string ID);
-        void setCo(double co);
-        void setHumidity(double humidity);
-        void setLight(bool light);
-        void setLpg(double lpg);
-        void setMotion(bool motion);
-        void setSmoke(double smoke);
-        void setTempF(double tempF);
-        void setTempC(double tempC);
+        void setCo(string co);
+        void setHumidity(string humidity);
+        void setLight(string light);
+        void setLpg(string lpg);
+        void setMotion(string motion);
+        void setSmoke(string smoke);
+        void setTempF(string tempF);
+        void setTempC(string tempC);
 };
 
 #endif

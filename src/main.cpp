@@ -10,15 +10,12 @@ using namespace std;
 
 int main() 
 {
+    // test code
     DataImporter test1("iot_telemetry_data.csv");
     test1.readCsv();
-    // test1.test_output(1);
+    for (int n = 0; n < 3; n++) {
+        test1.test_output(n);
+    }
 
-    // inheritance example from class
-    // anything in bracket is any parameter not from parent
-    // student::student(string name, float GPA, vector<string> courses) : person (name) { this->GPA=GPA; this->courses=courses; }
-
-    // when comparing values from two objects
-    // value > other.getValue();
     return 0;
 }

@@ -22,7 +22,6 @@ class DataImporter {
 
         // ----------------- Other ------------------
         bool isSensorUnique(string sensorID);
-        bool string_to_bool(string s);
         void readCsv();
         void test_output(int index);
 };

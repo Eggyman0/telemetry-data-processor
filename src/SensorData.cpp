@@ -23,35 +23,35 @@ string SensorData::getDeviceID() {
     return deviceID;
 }
 
-vector<double> SensorData::getCo() {
+vector<string> SensorData::getCo() {
     return co;
 }
 
-vector<double> SensorData::getHumidity() {
+vector<string> SensorData::getHumidity() {
     return humidity;
 }
 
-vector<bool> SensorData::getLight() {
+vector<string> SensorData::getLight() {
     return light;
 }
 
-vector<double> SensorData::getLpg() {
+vector<string> SensorData::getLpg() {
     return lpg;
 }
 
-vector<bool> SensorData::getMotion() {
+vector<string> SensorData::getMotion() {
     return motion;
 }
 
-vector<double> SensorData::getSmoke() {
+vector<string> SensorData::getSmoke() {
     return smoke;
 }
 
-vector<double> SensorData::getTempF() {
+vector<string> SensorData::getTempF() {
     return tempF;
 }
 
-vector<double> SensorData::getTempC() {
+vector<string> SensorData::getTempC() {
     return tempC;
 }
 
@@ -69,33 +69,33 @@ void SensorData::setDeviceID(string ID) {
     deviceID = ID;
 }
 
-void SensorData::setCo(double co) {
+void SensorData::setCo(string co) {
     this->co.push_back(co);
 }
 
-void SensorData::setHumidity(double humidity) {
+void SensorData::setHumidity(string humidity) {
     this->humidity.push_back(humidity);
 }
 
-void SensorData::setLight(bool light) {
+void SensorData::setLight(string light) {
     this->light.push_back(light);
 }
 
-void SensorData::setLpg(double lpg) {
+void SensorData::setLpg(string lpg) {
     this->lpg.push_back(lpg);
 }
-void SensorData::setMotion(bool motion) {
+void SensorData::setMotion(string motion) {
     this->motion.push_back(motion);
 }
 
-void SensorData::setSmoke(double smoke) {
+void SensorData::setSmoke(string smoke) {
     this->smoke.push_back(smoke);
 }
 
-void SensorData::setTempF(double tempF) {
+void SensorData::setTempF(string tempF) {
     this->tempF.push_back(tempF);
 }
 
-void SensorData::setTempC(double tempC) {
+void SensorData::setTempC(string tempC) {
     this->tempC.push_back(tempC);
 }
