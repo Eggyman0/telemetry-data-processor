@@ -6,6 +6,7 @@ This script is used to read, process, package, and output the information from a
 
 ## What have we done?
 ### Modifications Made Since the Initial UML Diagram
+Since our initial presentation in class, we have decided to have our vectors store strings instead of other data types like double or bool. This is because we want to export our data into another csv file, which would require us to have our data saved as strings.
 
 ### ChatGPT Usage
 AI was used for debugging errors that we had. So far, none of the code has been generated.
