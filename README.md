@@ -1,35 +1,44 @@
 # telemetry-data-processor
 This script is used to read, process, package, and output the information from a dataset containing information from iot telemetry sensors. This dataset is obtained from [kaggle.com](https://www.kaggle.com/datasets/garystafford/environmental-sensor-data-132k).
 
-## UML Diagram First Draft (subject to many changes)
-<img width="986" height="824" alt="2310_GroupProject_UML" src="https://github.com/user-attachments/assets/bb22925a-3210-4754-a6dd-5dcf123bedfa" />
+## UML Diagrams
+<details>
+  <summary>Draft UML Diagram</summary>
+  <img width="986" height="824" alt="2310_GroupProject_UML" src="https://github.com/user-attachments/assets/bb22925a-3210-4754-a6dd-5dcf123bedfa" />
+</details>
+
+<details>
+  <summary>Final UML Diagram</summary>
+  <img width="1563" height="1272" alt="2310_Final_UML" src="https://github.com/user-attachments/assets/f5716f1c-5a3b-449d-ba52-4ac8e9275ebe" />
+</details>
 
 ## What have we done?
 ### Modifications Made Since the Initial UML Diagram / Class Discussion
 * vectors store strings instead of other data types like double or bool
-  - Needed in order to export data into another csv file
-* Full implementations of more classes
-  - Example: Conversion Class
+  - Makes it easier to export data to another csv file.
+* Fully fleshed implementations of more classes
+  - Conversion Class
+  - Addition of enumeration header to help keep track of sensor metrics
  
-* Many assumptions were made along the design process of the project
+Notable Assumptions Made:
   - Format of data after conversion
-     - Ex: Time being converted into a readable format 
-
+     - Timestamps being converted into a readable format
+     - For each file, having one column for timestamp and one extra column for each unique sensor ID
+---
 ### ChatGPT Usage
-* Common questions asked to ChatGPT were often related to debugging code and error messages
+Common questions asked to ChatGPT were often related to debugging code and error messages
   - Example:
-* ChatGPT was asked, "What is this error?", with our code provided for reference
+    ChatGPT was asked, "What is this error?", with our code provided for reference
 ```
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:1263: std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::operator[](size_type) [with _Tp = SensorData*; _Alloc = std::allocator<SensorData*>; reference = SensorData*&; size_type = long long unsigned int]: Assertion '__n < this->size()' failed.
 ```
-* It showed that the function used to check if a sensor ID was unique had backwards logic
-  - Fixing the code was the challenging part, but the use of ChatGPT saved valuable time in the debugging process
-* ChatGPT partially generated the logic of the time conversion from epoch to UTC standard time in Y/M/D/H/M/S format
-  
-* Verification process involved testing sections of the code in the console
-  -Example:
-    - Once the changes suggested by ChatGPT were made in the example error message above, the code began working as intended 
+It showed that the function used to check if a sensor ID was unique had backwards logic. The use of ChatGPT saved valuable time in the debugging process.
 
+An additional problem it helped us solve was the long runtime required to write the new csv files. This was solved by having the accessor methods from the SensorData class return a reference to its vectors instead of a copy. It dramatically lowered the amount of time of writing the files from hours to seconds (not exaggerating here). We suspect it was due to memory issues due to copying vectors multiple times when sharing pointers to those vectors bewteen multiple classes.
+
+Besides debugging, ChatGPT partially generated the logic of the time conversion from epoch to UTC standard time in Y/M/D/H/M/S format with the use of the ctime library.
+
+---
 ### Collaboration
 * Lot of individual answers were created during the design phase of the project, specifically in the UML diagram
   - Different thought processes of each individual led to unique approaches to the design of the UML diagram design
@@ -43,7 +52,7 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:1263: std::vector<_Tp, _Al
 * Specific examples of work distribution:
   - Edmund: Specific sections of the UML Diagram, implementing classes like DataImporter, SensorData, etc.
   - Nakul: Specific sections of UML Diagram, implementing DataConversion class, Readme, etc.
-
+---
 ### Implementation
  Deliverables:
   - UML Diagram for all classes(Hub, DataImporter, DataExporter, SensorData, DataConversion)
