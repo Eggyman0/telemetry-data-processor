@@ -49,11 +49,11 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:1263: std::vector<_Tp, _Al
   - UML Diagram for all classes(Hub, DataImporter, DataExporter, SensorData, DataConversion)
   - Code Files for program(.h and .cpp files for all classes & main)
   - Explanation:
-    - Hub: Acts as an interface for the user to utilize the implemented functions through the various classes
-    - DataImporter: 'Reader' of sorts, which reads the given data file(iot_telementry_data.csv), sorts it, and stores it into a usable format(vectors) based on each sensor
-    - DataExporter: 'Writer' of sorts, which writes by gathering all processed data and composing it
-    - SensorData: Acts as a container object for each individual sensor
-    - DataConversion: Convert strings to double, double to string, Ferinheit to Celcius, and epoch time to Y/M/D/H/M/S
+    - **Hub**: Acts as an interface for the user to utilize the implemented functions through the various classes
+    - **DataImporter**: 'Reader' of sorts, which reads the given data file(iot_telementry_data.csv), sorts it, and stores it into a usable format(vectors) based on each sensor
+    - **DataExporter**: 'Writer' of sorts, which writes by gathering all processed data and composing it
+    - **SensorData**: Acts as a container object for each individual sensor
+    - **DataConversion**: Convert strings to double, double to string, Ferinheit to Celcius, and epoch time to Y/M/D/H/M/S
 
 * Methods of testing included extra functions (not present in UML diagram) made specifically for testing
   - Test functions would output specific lines of code based on the what was tested
