@@ -19,6 +19,8 @@ This script is used to read, process, package, and output the information from a
 * Fully fleshed implementations of more classes
   - Conversion Class
   - Addition of enumeration header to help keep track of sensor metrics
+* Relationships rearragned
+  - Due to how the project ended up being programmed, the association connections from the initial UML diagram changed to composition/aggregation relationships. For example, multiple classes contain a pointer to the vectors located in SensorData but none of those classes specifically own SensorData objects.
  
 Notable Assumptions Made:
   - Format of data after conversion
