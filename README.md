@@ -45,7 +45,7 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:1263: std::vector<_Tp, _Al
   - Nakul: Specific sections of UML Diagram, implementing DataConversion class, Readme, etc.
 
 ### Implementation
-* Deliverables:
+ Deliverables:
   - UML Diagram for all classes(Hub, DataImporter, DataExporter, SensorData, DataConversion)
   - Code Files for program(.h and .cpp files for all classes & main)
   - Explanation:
@@ -55,7 +55,7 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:1263: std::vector<_Tp, _Al
     - **SensorData**: Acts as a container object for each individual sensor
     - **DataConversion**: Convert strings to double, double to string, Ferinheit to Celcius, and epoch time to Y/M/D/H/M/S
 
-* Methods of testing included extra functions (not present in UML diagram) made specifically for testing
+Methods of testing included extra functions (not present in UML diagram) made specifically for testing
   - Test functions would output specific lines of code based on the what was tested
   - Expected lines printing would mean expected functionality 
 
