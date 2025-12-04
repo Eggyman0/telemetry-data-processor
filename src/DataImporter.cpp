@@ -13,19 +13,18 @@ DataImporter::DataImporter(string CsvFile) {
     this->CsvFile = CsvFile;
 }
 
-// ------------------------- Mutators ------------------------
-// void DataImporter::setExistingSensors(string sensorID) {
-//     existingSensors.push_back(sensorID);
-// }
-
-// void DataImporter::setSensors(SensorData* sensor) {
-//     v_sensors.push_back(sensor);
-// }
-
 // ------------------------ Accessors ---------------------------
-// vector<string> DataImporter::getExistingSensors() {
-//     return existingSensors;
+vector<SensorData*> DataImporter::getSensorPtr() {
+    return v_sensors;
+}
+
+// vector<string> DataImporter::getAllTimeStamps() {
+//     return allTimeStamps;
 // }
+
+vector<int> DataImporter::getTSID() {
+    return tsID;
+}
 
 // -------------------------- Other ----------------------------
 /**
@@ -67,6 +66,7 @@ void DataImporter::readCsv() {
     while (getline(iFile, tempLine)) { // loop until there is no more lines to read
         commaLocation = tempLine.find(',');
         tempTs = tempLine.substr(0, commaLocation);
+         // allTimeStamps.push_back(tempTs); // save time stamp to a vector that contains all the read time stamps
         tempLine = tempLine.substr(commaLocation+1, tempLine.length()); // after saving the previous data, sets tempLine to the rest of the line after the comma
         
         commaLocation = tempLine.find(',');
@@ -89,6 +89,7 @@ void DataImporter::readCsv() {
         SensorData *sensor = v_sensors[sensorIndex];
         sensor->setDeviceID(tempDevice); // may change later so we don't have to call this everytime
         sensor->setTs(tempTs);
+        tsID.push_back(sensorIndex);
 
         commaLocation = tempLine.find(',');
         tempStr = tempLine.substr(0, commaLocation);
@@ -124,14 +125,13 @@ void DataImporter::readCsv() {
     }
     
     iFile.close();
+    cout << "Finished file reading\n";
 }
 
+// only used for testing, not used in actual project
 void DataImporter::test_output(int index) {
     int sensorIndex = index;
     SensorData *sensor = v_sensors[sensorIndex];
     cout << "Device ID: " << sensor->getDeviceID() << "\n";
     cout << "Number of Elements: " << sensor->getTs().size() << "\n";
-    // for (int i = 0; i < sensor->getTs().size(); i++) {
-    //     cout << sensor->getTs()[i] << "\n";
-    // }
 }

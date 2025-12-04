@@ -11,47 +11,47 @@ SensorData::SensorData()
 }
 
 // -------------------- Accessor Functions --------------------------
-vector<string> SensorData::getTs() {
+const vector<string>& SensorData::getTs() {
     return ts;
 }
 
-vector<string> SensorData::getDateTime() {
+const vector<string>& SensorData::getDateTime() {
     return dateTime;
 }
 
-string SensorData::getDeviceID() {
+const string& SensorData::getDeviceID() {
     return deviceID;
 }
 
-vector<string> SensorData::getCo() {
+const vector<string>& SensorData::getCo() {
     return co;
 }
 
-vector<string> SensorData::getHumidity() {
+const vector<string>& SensorData::getHumidity() {
     return humidity;
 }
 
-vector<string> SensorData::getLight() {
+const vector<string>& SensorData::getLight() {
     return light;
 }
 
-vector<string> SensorData::getLpg() {
+const vector<string>& SensorData::getLpg() {
     return lpg;
 }
 
-vector<string> SensorData::getMotion() {
+const vector<string>& SensorData::getMotion() {
     return motion;
 }
 
-vector<string> SensorData::getSmoke() {
+const vector<string>& SensorData::getSmoke() {
     return smoke;
 }
 
-vector<string> SensorData::getTempF() {
+const vector<string>& SensorData::getTempF() {
     return tempF;
 }
 
-vector<string> SensorData::getTempC() {
+const vector<string>& SensorData::getTempC() {
     return tempC;
 }
 

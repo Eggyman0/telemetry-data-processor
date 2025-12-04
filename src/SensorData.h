@@ -1,6 +1,7 @@
 // SENSORDATA_H
 #ifndef SENSORDATA_H
 #define SENSORDATA_H
+
 #include <string>
 #include <vector>
 
@@ -24,17 +25,17 @@ class SensorData {
         SensorData();
 
         // Accessors
-        vector<string> getTs();
-        vector<string> getDateTime();
-        string getDeviceID();
-        vector<string> getCo();
-        vector<string> getHumidity();
-        vector<string> getLight();
-        vector<string> getLpg();
-        vector<string> getMotion();
-        vector<string> getSmoke();
-        vector<string> getTempF();
-        vector<string> getTempC();
+        const vector<string>& getTs();
+        const vector<string>& getDateTime();
+        const string& getDeviceID();
+        const vector<string>& getCo();
+        const vector<string>& getHumidity();
+        const vector<string>& getLight();
+        const vector<string>& getLpg();
+        const vector<string>& getMotion();
+        const vector<string>& getSmoke();
+        const vector<string>& getTempF();
+        const vector<string>& getTempC();
 
         // Mutators
         void setTs(string ts);
