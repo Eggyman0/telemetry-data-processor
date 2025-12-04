@@ -6,24 +6,56 @@ This script is used to read, process, package, and output the information from a
 
 ## What have we done?
 ### Modifications Made Since the Initial UML Diagram / Class Discussion
-* vectors store strings instead of other data types like double or bool.
+* vectors store strings instead of other data types like double or bool
   - Needed in order to export data into another csv file
 * Full implementations of more classes
   - Example: Conversion Class
+ 
 * Many assumptions were made along the design process of the project
   - Format of data after conversion
      - Ex: Time being converted into a readable format 
 
 ### ChatGPT Usage
-AI was used for debugging errors that we had. So far, none of the code has been generated.
-One of the first hurdles was this error message:
+* Common questions asked to ChatGPT were often related to debugging code and error messages
+  - Example:
+* ChatGPT was asked, "What is this error?", with our code provided for reference
 ```
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:1263: std::vector<_Tp, _Alloc>::reference std::vector<_Tp, _Alloc>::operator[](size_type) [with _Tp = SensorData*; _Alloc = std::allocator<SensorData*>; reference = SensorData*&; size_type = long long unsigned int]: Assertion '__n < this->size()' failed.
 ```
-For the prompt, we simply asked "what is this error?" and provided our code for reference. After that, it showed us that the function used to check if a sensor ID was unique had backwards logic. Fixing the code was the easy part, but having ChatGPT as a second helping hand shaved off most of our debugging time.
+* It showed that the function used to check if a sensor ID was unique had backwards logic
+  - Fixing the code was the challenging part, but the use of ChatGPT saved valuable time in the debugging process
+* ChatGPT partially generated the logic of the time conversion from epoch to UTC standard time in Y/M/D/H/M/S format
+  
+* Verification process involved testing sections of the code in the console
+  -Example:
+    - Once the changes suggested by ChatGPT were made in the example error message above, the code began working as intended 
 
 ### Collaboration
-Work was mostly split up among the different classes.
+* Lot of individual answers were created during the design phase of the project, specifically in the UML diagram
+  - Different thought processes of each individual led to unique approaches to the design of the UML diagram design
+  
+* After considering all given options, the best option was determined through reasoning
+  
+* The project had many sections that could be worked towards
+  - Examples being different classes, sections in UML diagram, and other minor tasks
+* Tasks were split based on many factors, like preferences, expertise, etc.
+
+* Specific examples of work distribution:
+  - Edmund: Specific sections of the UML Diagram, implementing classes like DataImporter, SensorData, etc.
+  - Nakul: Specific sections of UML Diagram, implementing DataConversion class, Readme, etc.
 
 ### Implementation
-For testing, we had an extra function (not in the UML diagram) in the DataImporter class to output specific lines that were read from the csv file. This ensured that we were reading the file correctly before implementing the file writing class. Additionally, when debugging, extra lines were used to print out things in the terminial to ensure that certain processes were operating accordingly.
+* Deliverables:
+  - UML Diagram for all classes(Hub, DataImporter, DataExporter, SensorData, DataConversion)
+  - Code Files for program(.h and .cpp files for all classes & main)
+  - Explanation:
+    - Hub: Acts as an interface for the user to utilize the implemented functions through the various classes
+    - DataImporter: 'Reader' of sorts, which reads the given data file(iot_telementry_data.csv), sorts it, and stores it into a usable format(vectors) based on each sensor
+    - DataExporter: 'Writer' of sorts, which writes by gathering all processed data and composing it
+    - SensorData: Acts as a container object for each individual sensor
+    - DataConversion: Convert strings to double, double to string, Ferinheit to Celcius, and epoch time to Y/M/D/H/M/S
+
+* Methods of testing included extra functions (not present in UML diagram) made specifically for testing
+  - Test functions would output specific lines of code based on the what was tested
+  - Expected lines printing would mean expected functionality 
+
