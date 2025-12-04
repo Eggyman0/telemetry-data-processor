@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// passes the vector containing pointers to sensor objects by reference
+// Constructor
 DataExporter::DataExporter(vector<SensorData*> &v_sensors, vector<int> tsID) {
     this->v_sensors = v_sensors;
     this->tsID = tsID;
@@ -18,7 +18,7 @@ DataExporter::DataExporter(vector<SensorData*> &v_sensors, vector<int> tsID) {
  * 
  * @param metric name of specific metric you want data from
  * @param sensorIndex used to get data from a specific sensor object from v_sensors
- * @return vector<string> 
+ * @return const vector<string>&
  */
 const vector<string>& DataExporter::getSpecificMetric(SensorMetrics metric, int sensorIndex) const {
     switch (metric) {
@@ -42,8 +42,10 @@ const vector<string>& DataExporter::getSpecificMetric(SensorMetrics metric, int 
 }
 
 /**
- * @brief outputs a single csv file based on desired metric and file name
+ * @brief creates and writes to a new csv file that only contains the specified metric
  * 
+ * @param metric the type of data that was read from the original dataset such as co, light, temp, etc.
+ * @param fileName name of the file that will be created
  */
 void DataExporter::exportMetric(SensorMetrics metric, string fileName) {
     fstream csvFile;
@@ -70,10 +72,12 @@ void DataExporter::exportMetric(SensorMetrics metric, string fileName) {
     vector<bool> wasDataSent(v_sensors.size());
     vector<int> sensorIndexTracker;
     
+    // sensorIndexTracker used to check if an element of data has been written in the csv
     for (int i = 0; i < v_sensors.size(); i++) {
         sensorIndexTracker.push_back(0);
     }
     
+    // Outputs the metric data corresponding to each timestamp in standard csv format with quotation marks
     for (int tsIndex = 0; tsIndex < tsID.size(); tsIndex++) {
         for (int sensorIndex = 0; sensorIndex < v_sensors.size(); sensorIndex++) {
             if (tsID[tsIndex] == sensorIndex) {

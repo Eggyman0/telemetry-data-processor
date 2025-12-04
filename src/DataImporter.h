@@ -10,7 +10,6 @@ class DataImporter {
         string CsvFile;
         vector<string> existingSensors; // keeps track of the unique ID of each sensor
         vector<SensorData*> v_sensors;
-        // vector<string> allTimeStamps;
         vector<int> tsID; // identifier for which sensor sent data at a certain timestamp
     public:
         DataImporter(string CsvFile);

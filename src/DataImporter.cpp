@@ -8,25 +8,29 @@
 
 using namespace std;
 
-// ----------------------- Constructor -----------------------
+// Constructor
 DataImporter::DataImporter(string CsvFile) {
     this->CsvFile = CsvFile;
 }
 
-// ------------------------ Accessors ---------------------------
+/**
+ * @brief accessor to vector of DataSensor pointers
+ * 
+ * @return vector<SensorData*> 
+ */
 vector<SensorData*> DataImporter::getSensorPtr() {
     return v_sensors;
 }
 
-// vector<string> DataImporter::getAllTimeStamps() {
-//     return allTimeStamps;
-// }
-
+/**
+ * @brief accessor to vector of timestamp identifiers
+ * 
+ * @return vector<int> 
+ */
 vector<int> DataImporter::getTSID() {
     return tsID;
 }
 
-// -------------------------- Other ----------------------------
 /**
  * @brief checks if a sensor is unique using the sensor's ID
  * 
@@ -66,7 +70,6 @@ void DataImporter::readCsv() {
     while (getline(iFile, tempLine)) { // loop until there is no more lines to read
         commaLocation = tempLine.find(',');
         tempTs = tempLine.substr(0, commaLocation);
-         // allTimeStamps.push_back(tempTs); // save time stamp to a vector that contains all the read time stamps
         tempLine = tempLine.substr(commaLocation+1, tempLine.length()); // after saving the previous data, sets tempLine to the rest of the line after the comma
         
         commaLocation = tempLine.find(',');
@@ -87,7 +90,7 @@ void DataImporter::readCsv() {
             }
         }
         SensorData *sensor = v_sensors[sensorIndex];
-        sensor->setDeviceID(tempDevice); // may change later so we don't have to call this everytime
+        sensor->setDeviceID(tempDevice); // code may be a bit redundant but there has been no need to change so far
         sensor->setTs(tempTs);
         tsID.push_back(sensorIndex);
 

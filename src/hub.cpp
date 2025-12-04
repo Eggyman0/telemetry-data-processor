@@ -13,13 +13,11 @@ void Hub::startReading(string CsvFile) {
     doesFileExist = true;
 
     importer->readCsv();
-    tsID = importer->getTSID();
+    tsID = importer->getTSID(); // create a copy of the tsID vector for the Hub
 
     // Assigns sensors created by DataImporter to a vector in the Hub class
+    // This allows the hub to grant access to the data from SensorData objects
     v_sensors = importer->getSensorPtr();
-    // for (int i = 0; i < importer->getSensorPtr().size(); i++) {
-    //     v_sensors.push_back(importer->getSensorPtr()[i]);
-    // }
 }
 
 void Hub::startExporting() {
