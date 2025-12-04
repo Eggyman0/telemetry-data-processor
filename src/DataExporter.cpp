@@ -35,7 +35,7 @@ const vector<string>& DataExporter::getSpecificMetric(SensorMetrics metric, int 
         case SensorMetrics::SMOKE:
             return v_sensors[sensorIndex]->getSmoke();
         case SensorMetrics::TEMP:
-            return v_sensors[sensorIndex]->getTempF(); // will change to tempC later
+            return v_sensors[sensorIndex]->getTempC(); // will change to tempC later
     }
     static const std::vector<std::string> empty;
     return empty;
@@ -54,12 +54,12 @@ void DataExporter::exportMetric(SensorMetrics metric, string fileName) {
 
     if (csvFile.is_open() == false) {
         cout << "File could not be created\n";
-        cout << "File path error: " << filePath;
+        cout << "File path error: " << filePath << '\n';
         return;
     }
 
     // set header row
-    csvFile << "\"Timestamp\",";
+    csvFile << "\"Date Time\",";
     for (int n = 0; n < v_sensors.size(); n++) {
         csvFile << v_sensors[n]->getDeviceID();
         if (n == v_sensors.size() - 1) {
@@ -70,19 +70,19 @@ void DataExporter::exportMetric(SensorMetrics metric, string fileName) {
     }
     
     vector<bool> wasDataSent(v_sensors.size());
-    vector<int> sensorIndexTracker;
+    vector<int> sensorIndexTracker(v_sensors.size(), 0);
     
     // sensorIndexTracker used to check if an element of data has been written in the csv
-    for (int i = 0; i < v_sensors.size(); i++) {
-        sensorIndexTracker.push_back(0);
-    }
+    // for (int i = 0; i < v_sensors.size(); i++) {
+    //     sensorIndexTracker.push_back(0);
+    // }
     
     // Outputs the metric data corresponding to each timestamp in standard csv format with quotation marks
     for (int tsIndex = 0; tsIndex < tsID.size(); tsIndex++) {
         for (int sensorIndex = 0; sensorIndex < v_sensors.size(); sensorIndex++) {
             if (tsID[tsIndex] == sensorIndex) {
                 wasDataSent[sensorIndex] = true;
-                csvFile << v_sensors[sensorIndex]->getTs()[sensorIndexTracker[sensorIndex]] << ",";
+                csvFile << v_sensors[sensorIndex]->getDateTime()[sensorIndexTracker[sensorIndex]] << ",";
             } else {
                 wasDataSent[sensorIndex] = false;
             }
@@ -105,7 +105,7 @@ void DataExporter::exportMetric(SensorMetrics metric, string fileName) {
     }
 
     csvFile.close();
-    cout << "A file has been finished writing\n";
+    cout << "Finished writing " << fileName << "\n";
 }
 
 /**
@@ -119,5 +119,5 @@ void DataExporter::exportAllMetrics() {
     exportMetric(SensorMetrics::LPG, "lpg_measurement.csv");
     exportMetric(SensorMetrics::MOTION, "motion_measurement.csv");
     exportMetric(SensorMetrics::SMOKE, "smoke_measurement.csv");
-    exportMetric(SensorMetrics::TEMP, "temp_measurement.csv");
+    exportMetric(SensorMetrics::TEMP, "tempC_measurement.csv");
 }

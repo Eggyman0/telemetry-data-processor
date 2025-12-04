@@ -64,7 +64,6 @@ void SensorData::setDateTime(string dateTime) {
     this->dateTime.push_back(dateTime);
 }
 
-
 void SensorData::setDeviceID(string ID) {
     deviceID = ID;
 }

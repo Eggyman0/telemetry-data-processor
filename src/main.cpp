@@ -5,6 +5,9 @@
 #include <fstream>
 #include "Hub.h"
 
+//test
+#include "DataConversion.h"
+
 using namespace std;
 
 int main() 
