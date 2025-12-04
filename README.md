@@ -5,8 +5,14 @@ This script is used to read, process, package, and output the information from a
 <img width="986" height="824" alt="2310_GroupProject_UML" src="https://github.com/user-attachments/assets/bb22925a-3210-4754-a6dd-5dcf123bedfa" />
 
 ## What have we done?
-### Modifications Made Since the Initial UML Diagram
-Since our initial presentation in class, we have decided to have our vectors store strings instead of other data types like double or bool. This is because we want to export our data into another csv file, which would require us to have our data saved as strings.
+### Modifications Made Since the Initial UML Diagram / Class Discussion
+* vectors store strings instead of other data types like double or bool.
+  - Needed in order to export data into another csv file
+* Full implementations of more classes
+  - Example: Conversion Class
+* Many assumptions were made along the design process of the project
+  - Format of data after conversion
+     - Ex: Time being converted into a readable format 
 
 ### ChatGPT Usage
 AI was used for debugging errors that we had. So far, none of the code has been generated.
